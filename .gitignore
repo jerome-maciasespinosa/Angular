@@ -1,1 +1,4 @@
-ng-complete-guide/node_modules
+ng-complete-guide/DotNetCore&Angular/DatingApp/bin
+ng-complete-guide/DotNetCore&Angular/DatingApp/obj
+ng-complete-guide/DotNetCore&Angular/DatingApp/.vscode
+ng-complete-guide/DotNetCore&Angular/DatingApp/*.db
