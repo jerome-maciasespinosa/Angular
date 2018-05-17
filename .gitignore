@@ -1,4 +1,4 @@
-DotNetCoreAndAngular/DatingApp/bin
-DotNetCoreAndAngular/DatingApp/obj
-DotNetCoreAndAngular/DatingApp/*.db
+DotNetCoreAndAngular/DatingApp/DatingApp.API/bin
+DotNetCoreAndAngular/DatingApp/DatingApp.API/obj
+DotNetCoreAndAngular/DatingApp/DatingApp.API/*.db
 ng-complete-guide/node_modules
