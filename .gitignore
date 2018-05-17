@@ -1,5 +1,4 @@
-DotNetCore&Angular/DatingApp/bin
-DotNetCore&Angular/DatingApp/obj
-DotNetCore&Angular/DatingApp/.vscode
-DotNetCore&Angular/DatingApp/*.db
+DotNetCoreAndAngular/DatingApp/bin
+DotNetCoreAndAngular/DatingApp/obj
+DotNetCoreAndAngular/DatingApp/*.db
 ng-complete-guide/node_modules
