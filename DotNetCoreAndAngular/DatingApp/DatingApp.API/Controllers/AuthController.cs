@@ -24,21 +24,21 @@ namespace DatingApp.API.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody]UserForRegisterDto userForRegisterDto) 
+        public async Task<IActionResult> Register([FromBody]UserForRegisterDto userForRegisterDto)
         {
             //Validate request
             if(!string.IsNullOrEmpty(userForRegisterDto.Username)){
                 userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
             }
-            
+
             if(await _repo.UserExists(userForRegisterDto.Username)){
                 ModelState.AddModelError("Username", "Username already exists");
-            }   
+            }
 
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
-            
+
             var userTocreate = new User {
                 Username = userForRegisterDto.Username
             };
@@ -49,8 +49,8 @@ namespace DatingApp.API.Controllers
 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] UserForLoginDto userForLogindto) {
-            
-            throw new Exception("computer says no!");
+
+            // throw new Exception("computer says no!");
             var userFromRepo = await _repo.Login(userForLogindto.Username.ToLower(), userForLogindto.Password);
             if (userFromRepo == null) {
                 return Unauthorized();
@@ -60,7 +60,7 @@ namespace DatingApp.API.Controllers
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_config.GetSection("AppSettings:Token").Value);
             var tokenDescriptor = new SecurityTokenDescriptor {
-                Subject = new ClaimsIdentity( new Claim[] 
+                Subject = new ClaimsIdentity( new Claim[]
                 {
                     new Claim(ClaimTypes.NameIdentifier, userFromRepo.Id.ToString()),
                     new Claim(ClaimTypes.Name, userFromRepo.Username)

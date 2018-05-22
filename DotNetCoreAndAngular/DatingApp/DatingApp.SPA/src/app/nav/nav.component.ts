@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../_services/auth.service';
+import { AlertifyService } from '../_services/alertify.service';
 
 @Component({
   selector: 'app-nav',
@@ -9,28 +10,29 @@ import { AuthService } from '../_services/auth.service';
 })
 export class NavComponent implements OnInit {
 
-  model: any ={};
-  constructor(private authService: AuthService) { }
+  model: any = {};
+  constructor(public authService: AuthService, private alertifyService: AlertifyService) { }
 
   ngOnInit() {
   }
 
   login(loginForm: NgForm) {
-    this.authService.login(this.model).subscribe(data =>{
-      console.log('logged in successfully', data);
+    this.authService.login(this.model).subscribe(data => {
+     this.alertifyService.success('logged in successfully');
     }, error => {
-      console.log(error);
+      this.alertifyService.error(error);
     });
   }
 
   logout() {
     this.authService.userToken = null;
     localStorage.removeItem('token');
-    console.log('logged out');
+    this.alertifyService.message('logged out');
   }
   loggedIn() {
-    const token = localStorage.getItem('token');
-    return !!token;  // token !== null // return true if token
+    // const token = localStorage.getItem('token');
+    // return !!token;  // token !== null // return true if token
+    return this.authService.loggedIn();
   }
 
 }
