@@ -25,3 +25,10 @@ in Startup.cs       Pour autoriser l'accès à l'api depuis un client, Ajouter d
 
 Dans Startup.cs     Pour indiquer que nous utilisons l'injection de dépendance
                         services.Add
+
+
+Pour ajouter un package  ===> 3 solutions 
+                            1) si nuget package manager est installé, ctrl maj p 
+                                indiquer le nom du packet
+                            2) terminal => dot net add package nomDuPackage
+                            3) l'ajouter directement dans csproj
