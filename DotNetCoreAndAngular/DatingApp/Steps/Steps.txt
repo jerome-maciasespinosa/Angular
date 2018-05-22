@@ -1,0 +1,27 @@
+Dans terminal       dotnet new webapi -o DatingApp.API -n DatingApp.API         (o = output & n = name of the application)
+Dans terminal       $env:ASPNETCORE_ENVIRONMENT = "Development"                 pour passerle projet en mode développement
+Dans csproj         
+                    <ItemGroup>
+                        <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
+                        <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="2.0.0" /> <!--To  refresh the app when saved-->
+                        <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" /><!--Entity-->
+                    </ItemGroup>
+                    ==> Puis dans terminal, 
+                        dotnet restore          pour appliquer les changements
+                        dotnet watch run        pour raffraichir l'app quand on sauvegarde
+
+Dans Startup.cs     Pour utiliser DbContext, ajouter dans ConfigureServices ()
+                        services.AddDbContext<DataContext>(x=>x.UserSqlite(Configuration.GetConnectionString("DefaultConnection")))
+Dans appsettings.json   
+                    "ConnectionStrings": {
+                        "DefaultConnection": "Data Source=DatingApp.db"
+                    }
+
+                    Lorsque Entity est ajouté dans csproj, taper dans terminal : dotnet ef migrations add NameOfMigration    ce qui crée un répertoire de migration
+                    Puis, pour créer en base, taper dans terminal : dotnet ef database update
+in Startup.cs       Pour autoriser l'accès à l'api depuis un client, Ajouter dans Configure() =>    app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());      Before app.UserMvc
+                    Puis ajouter dans ConfigureServices() =>    services.AddCors();
+
+
+Dans Startup.cs     Pour indiquer que nous utilisons l'injection de dépendance
+                        services.Add
