@@ -46,7 +46,7 @@ namespace DatingApp.API
              services.AddScoped<IAuthRepository, AuthRepository>(); // => crée une nouvelle instance à chaque requête http
              services.AddScoped<IDatingRepository, DatingRepository>(); // => crée une nouvelle instance à chaque requête http
             // services.AddSingleton() // => crée un repo durant le temps de vie de l'app
-            
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options => {
                 options.TokenValidationParameters = new TokenValidationParameters{
