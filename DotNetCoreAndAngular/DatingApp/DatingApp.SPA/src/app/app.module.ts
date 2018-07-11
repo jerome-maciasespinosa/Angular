@@ -1,3 +1,4 @@
+import { ListsResolver } from './_resolvers/lists.resolver';
 import { TimeAgoPipe } from 'time-ago-pipe';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { MemberListResolver } from './_resolvers/member-list.ressolver';
@@ -64,8 +65,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 
   ],
   providers: [AuthService, AlertifyService,  AuthGuard, UserService, MemberDetailResolver, MemberListResolver,
-    MemberEditResolver,
-    PreventUnsavedChanges],
+    MemberEditResolver, ListsResolver, PreventUnsavedChanges],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
