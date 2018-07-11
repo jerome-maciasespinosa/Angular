@@ -1,3 +1,4 @@
+import { TimeAgoPipe } from 'time-ago-pipe';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { MemberListResolver } from './_resolvers/member-list.ressolver';
 import { MemberDetailResolver } from './_resolvers/member-detail.ressolver';
@@ -14,7 +15,7 @@ import { AuthService } from './_services/auth.service';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { AlertifyService } from './_services/alertify.service';
-import { TabsModule, BsDropdownModule } from 'ngx-bootstrap';
+import { TabsModule, BsDropdownModule, PaginationModule, ButtonsModule } from 'ngx-bootstrap';
 import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 import { MemberListComponent } from './members/member-list/member-list.component';
 import { ListsComponent } from './lists/lists.component';
@@ -31,7 +32,6 @@ import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { PhotoEditorComponent } from './photo-editor/photo-editor.component';
 import { FileUploadModule } from 'ng2-file-upload';
 
-
 @NgModule({
    declarations: [
       AppComponent,
@@ -44,7 +44,8 @@ import { FileUploadModule } from 'ng2-file-upload';
       MemberCardComponent,
       MemberDetailComponent,
       MemberEditComponent,
-      PhotoEditorComponent
+      PhotoEditorComponent,
+      TimeAgoPipe
    ],
    imports: [
       BrowserModule,
@@ -57,7 +58,9 @@ import { FileUploadModule } from 'ng2-file-upload';
       NgxGalleryModule,
       FileUploadModule,
       ReactiveFormsModule,
-     BsDatepickerModule.forRoot()
+     BsDatepickerModule.forRoot(),
+     PaginationModule.forRoot(),
+     ButtonsModule.forRoot()
 
   ],
   providers: [AuthService, AlertifyService,  AuthGuard, UserService, MemberDetailResolver, MemberListResolver,
