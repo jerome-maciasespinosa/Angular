@@ -3,7 +3,6 @@ import { AuthService } from './../../_services/auth.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../../_models/User';
 import { UserService } from '../../_services/user.service';
-import { AlertifyService } from '../../_services/alertify.service';
 
 @Component({
   selector: 'app-member-card',
@@ -16,6 +15,7 @@ export class MemberCardComponent implements OnInit {
   constructor(private authService: AuthService, private userService: UserService, private alertifyServ: AlertifyService) { }
 
   ngOnInit() {
+    
   }
 
   sendLike (id: number) {
@@ -23,7 +23,7 @@ export class MemberCardComponent implements OnInit {
       this.alertifyServ.success('You have liked: ' + this.user.knownAs);
     }, error => {
       this.alertifyServ.error(error);
-    })
+    });
   }
 
 }
